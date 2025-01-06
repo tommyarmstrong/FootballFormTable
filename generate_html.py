@@ -220,10 +220,6 @@ form_table = league_table.sort_values(
 ).reset_index(drop=True)
 form_table.index = form_table.index + 1
 
-# Display the sorted table
-form_style = form_table.style.background_gradient(subset='Form_Points', cmap='RdYlGn')
-form_style
-
 # Call function to generate HTML and write to file
 html = generate_html(form_table, league_name, date_string=formatted_date)
 with open('index.html', 'w') as f:
