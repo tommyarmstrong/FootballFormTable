@@ -1,0 +1,40 @@
+name: Generate and Commit HTML
+
+on:
+  schedule:
+    # Run every day at 10 PM (UTC)
+    - cron: '0 22 * * *'
+
+jobs:
+  generate-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.12
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # Run the Python script to generate index.html
+      - name: Run script to generate index.html
+        run: python generate_html.py
+
+      # Commit and push the changes
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Automated update of index.html"
+          git push
