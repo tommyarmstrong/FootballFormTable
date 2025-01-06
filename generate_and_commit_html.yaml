@@ -1,43 +1,40 @@
-name: Generate and Commit File
+name: Generate and Commit HTML
 
 on:
   schedule:
-    # Runs every day at midnight (UTC)
-    - cron: '0 0 * * *'
-  workflow_dispatch:  # Allows manual triggering from GitHub UI
+    # Run every day at 10 PM (UTC)
+    - cron: '0 22 * * *'
 
 jobs:
-  generate_and_commit:
+  generate-and-commit:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v4
 
+      # Set up Python
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: 3.12
 
+      # Install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Install any dependencies, if needed
+          pip install -r requirements.txt
 
-      - name: Run Python script to generate file
-        run: |
-          python generate_file.py  # Replace with your script that generates the file
+      # Run the Python script to generate index.html
+      - name: Run script to generate index.html
+        run: python generate_html.py
 
-      - name: Configure Git user
+      # Commit and push the changes
+      - name: Commit and push changes
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "github-actions@github.com"
-
-      - name: Stage, commit, and push changes
-        run: |
-          git add versioned_file.txt  # The file generated/modified by the Python script
-          git commit -m "Update versioned file"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Automated update of index.html"
           git push
-        env:
-          # Use GitHub's token to authenticate
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
