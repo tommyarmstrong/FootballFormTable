@@ -27,13 +27,17 @@
         font-weight: bold;
       }
       /* Align text in the "Team" column to the left */
-      td.team {
+      .team {
         text-align: left;
       }
       /* Hide columns with the "hide-mobile" class on small screens */
       @media only screen and (max-width: 1000px) and (orientation: portrait) {  
         .hide-mobile {
           display: none;
+        }
+        th, td {
+          font-size: calc(3vw + 1em); /* Increase text size on smaller screens */
+          padding: 10px;
         }
       }
       /* Hide the last column in the table */
@@ -48,14 +52,14 @@
    English Premier League - Form Table
   </h1>
   <h2>
-   06-01-2025 16:13:25
+   06-01-2025 18:41:46
   </h2>
   <table border="1" class="dataframe display" id="formTable">
    <thead>
     <tr style="text-align: right;">
      <th>
      </th>
-     <th>
+     <th class="team">
       Team
      </th>
      <th>
@@ -98,7 +102,7 @@
      <th>
       1
      </th>
-     <td>
+     <td class="team">
       Nottingham Forest
      </td>
      <td>
@@ -139,7 +143,7 @@
      <th>
       2
      </th>
-     <td>
+     <td class="team">
       Newcastle United
      </td>
      <td>
@@ -180,7 +184,7 @@
      <th>
       3
      </th>
-     <td>
+     <td class="team">
       Liverpool
      </td>
      <td>
@@ -221,7 +225,7 @@
      <th>
       4
      </th>
-     <td>
+     <td class="team">
       AFC Bournemouth
      </td>
      <td>
@@ -262,7 +266,7 @@
      <th>
       5
      </th>
-     <td>
+     <td class="team">
       Arsenal
      </td>
      <td>
@@ -303,7 +307,7 @@
      <th>
       6
      </th>
-     <td>
+     <td class="team">
       Aston Villa
      </td>
      <td>
@@ -344,7 +348,7 @@
      <th>
       7
      </th>
-     <td>
+     <td class="team">
       Crystal Palace
      </td>
      <td>
@@ -385,7 +389,7 @@
      <th>
       8
      </th>
-     <td>
+     <td class="team">
       West Ham United
      </td>
      <td>
@@ -426,7 +430,7 @@
      <th>
       9
      </th>
-     <td>
+     <td class="team">
       Chelsea
      </td>
      <td>
@@ -467,7 +471,7 @@
      <th>
       10
      </th>
-     <td>
+     <td class="team">
       Manchester City
      </td>
      <td>
@@ -508,7 +512,7 @@
      <th>
       11
      </th>
-     <td>
+     <td class="team">
       Fulham
      </td>
      <td>
@@ -549,7 +553,7 @@
      <th>
       12
      </th>
-     <td>
+     <td class="team">
       Ipswich Town
      </td>
      <td>
@@ -590,7 +594,7 @@
      <th>
       13
      </th>
-     <td>
+     <td class="team">
       Wolverhampton Wanderers
      </td>
      <td>
@@ -631,7 +635,7 @@
      <th>
       14
      </th>
-     <td>
+     <td class="team">
       Brentford
      </td>
      <td>
@@ -672,7 +676,7 @@
      <th>
       15
      </th>
-     <td>
+     <td class="team">
       Everton
      </td>
      <td>
@@ -713,7 +717,7 @@
      <th>
       16
      </th>
-     <td>
+     <td class="team">
       Brighton &amp; Hove Albion
      </td>
      <td>
@@ -754,7 +758,7 @@
      <th>
       17
      </th>
-     <td>
+     <td class="team">
       Manchester United
      </td>
      <td>
@@ -795,7 +799,7 @@
      <th>
       18
      </th>
-     <td>
+     <td class="team">
       Tottenham Hotspur
      </td>
      <td>
@@ -836,7 +840,7 @@
      <th>
       19
      </th>
-     <td>
+     <td class="team">
       Leicester City
      </td>
      <td>
@@ -877,7 +881,7 @@
      <th>
       20
      </th>
-     <td>
+     <td class="team">
       Southampton
      </td>
      <td>
@@ -917,7 +921,7 @@
    </tbody>
   </table>
   <script>
-   // Function to calculate RGB color based on points
+   // Function to calculate RGB colour based on points
       function getColorBasedOnPoints(points) {
         const red = Math.min(255, Math.floor((18 - points) * 14)); // More red for lower points
         const green = Math.min(255, Math.floor(points * 14)); // More green for higher points
@@ -930,8 +934,9 @@
         const formCell = row.cells[11];  // Form column is in the twelveth column (index 11)
         const points = parseInt(pointsCell.textContent, 10); // Get the points as a number
 
-        const color = getColorBasedOnPoints(points); // Get the corresponding color
-        formCell.style.backgroundColor = color; // Set the background color
+        const color = getColorBasedOnPoints(points); // Get the corresponding colour
+        formCell.style.backgroundColor = color; // Set the background colour
+        formCell.style.color = "white"; //Set text colour
       });
   </script>
  </body>
