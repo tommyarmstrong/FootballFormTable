@@ -3,7 +3,7 @@ name: Generate and Commit HTML
 on:
   schedule:
     # Run every day at 10 PM (UTC)
-    - cron: '49 21 * * *'
+    - cron: '* 22 * * *'
 
 jobs:
   generate-and-commit:
