@@ -37,12 +37,4 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
           git commit -m "Automated update of index.html"
-
-      # Pull remote changes before pushing
-      - name: Pull remote changes
-        run: git pull --rebase origin main
-
-      # Push changes to GitHub
-      - name: Push changes
-        run: git push origin main
-              # git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
