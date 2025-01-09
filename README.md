@@ -15,7 +15,7 @@ This is a small pet project to automate a "Form Table" for English Premier Leagu
 
 ## Description
 
-The aim was to create a table of all the teams in the league, sorted on recent form, and make available over the internet, for personal use. 
+The aim was to create a table of all the teams in the league, sorted on recent form, and make available over the internet for personal use. 
 
 The project:
 - Scrapes generaly available data on a daily basis.
@@ -26,10 +26,10 @@ The project:
 ## Features 
 
 - The table is sorted on form over each club's most recent six results.
-- The table uses colour coded according to good (green) and poor (red) form.
+- The table is colour coded green for good form and red for poor form.
 - The table renders according to screen size and orientation (i.e. viewable in phone or laptop).
 - The code is configurable for EPL, EFL, La Liga, Serie A and Bundesliga leagues.
-- The Github deployment refreshes the form table daily at 22:30 UTC.
+- The Github deployment refreshes the table daily at 22:30 UTC.
 
 ## Availability
 
