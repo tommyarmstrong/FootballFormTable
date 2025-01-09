@@ -6,13 +6,16 @@ This is a small pet project to automate a "Form Table" for English Premier Leagu
 - [Description](#description)
 - [Features](#features)
 - [Availability](#availability)
-- [Installation](#installation)
-- [Usage](#usage)
+- [Google Colab Notebook](#google-colab-notebook)
+- [Local Installation and Usage](#local-installation-and-usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
 
 
 ## Description
 
-The aim was to create a table of all the teams in the league, sorted on recent form, and make available over the internet. 
+The aim was to create a table of all the teams in the league, sorted on recent form, and make available over the internet, for personal use. 
 
 The project:
 - Scrapes generaly available data on a daily basis.
@@ -32,7 +35,16 @@ The project:
 
 The table can be accessed in a browser from https://tommyarmstrong.github.io/FootballFormTable/.
 
-## Installation
+## Google Colab Notebook
+
+The code was developed in a Google Colab Notebook. This notebook is available in the repository as `Football_Form_Tables.ipynb`.
+
+This notebook can be opened in Google Colab from: https://colab.research.google.com/github/tommyarmstrong/FootballFormTable/blob/main/Football_Form_Tables.ipynb.
+
+
+## Local Installation and Usage
+
+### Installation
 
 To set up the project locally, follow these steps:
 
@@ -42,18 +54,18 @@ To set up the project locally, follow these steps:
   cd your-repository
   ```
 
-2. Create a virtual environment using conda or venv
+2. (Optional) Create a virtual environment using conda or venv:
 ```bash
 conda create --name footballformtable
 conda activate footballformtable
 ```
 
-3. Install required packages
+3. Install required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
+### Usage
 
 To create the Form Table as an HTML file, run the `generate_html.py` script:
 
@@ -63,7 +75,7 @@ python generate_html.py
 
 The file `index.hmtl` can be viewed in a browser or served by a webserver.
 
-### Configuration 
+### Changing the League Configuration 
 
 By default the script generates a form table for the English Premier League. To generate a form table for a different league edit the `generate_html.py` script and modify the line:
 
@@ -80,7 +92,7 @@ league_name = 'German Bundesliga'
 
 Then re-run the script.
 
-## Contributing
+## Contributing
 
 Contributions are welcome! Here's how you can help:
 
@@ -103,7 +115,19 @@ git push origin feature-name
 
 5. Open a pull request.
 
-Please see the CONTRIBUTING.md file for more details.
+## License
+
+This project is licensed under the [GNU General Public License v3.0](LICENSE).
+
+You are free to use, modify, and distribute this software, provided that any derivative work is also licensed under the GPLv3. See the [LICENSE](LICENSE) file for detailed terms and conditions.
+
+For more information about the GPLv3, visit the official [GNU licenses page](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+
+## Acknowledgements
+
+The data used to populate the Form Table is taken from the [BBC Sport](https://www.bbc.co.uk/sport/football) website.
+
 
 
 
