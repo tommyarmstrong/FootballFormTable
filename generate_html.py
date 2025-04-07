@@ -203,11 +203,17 @@ if format =='new':
 
 league_table.drop('form_long', axis=1, inplace=True)
 
+# Extract the first one or two numerical characters from 'Team' for 'Position'
+league_table['Position'] = league_table['Team'].str.extract(r'^(\d{1,2})')
+
+# Remove the first one or two numerical characters from 'Team'
+league_table['Team'] = league_table['Team'].str.replace(r'^\d{1,2}', '', regex=True)
+
 # Calculate Form points
 league_table['Form_Points'] = league_table.apply(lambda row: bbc_form_points(row.Form) , axis=1)
 
 # Set more standard column names
-cols = ['Position', 'Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts', 'Form', 'Form_Points']
+cols = ['Team', 'P', 'W', 'D', 'L', 'F', 'A', 'GD', 'Pts', 'Form', 'Position', 'Form_Points']
 league_table.columns = cols
 
 # Change position of Team and League Position
